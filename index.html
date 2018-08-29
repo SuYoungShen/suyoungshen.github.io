@@ -48,10 +48,14 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
 
+	<!-- 彈跳視窗  -->
+	<link rel="stylesheet" href="css/sweetalert2.min.css">
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
+
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 	<style media="screen">
@@ -88,6 +92,7 @@
 		  border-color: #000000 !important;
 			color: #fff !important;
 		}
+
 	</style>
 	</head>
 	<body>
@@ -507,7 +512,8 @@
 			</div>
 			<div class="row">
 				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="http://sushentravel.web.youp.ga/wanwanton/" target="_blank" class="work" style="background-image: url(images/works/wanwanton.jpg);">
+					<a href="javascript:void(0);" target="_blank" class="work wanwanton" style="background-image: url(images/works/wanwanton.jpg);">
+					<!-- <a href="http://sushentravel.web.youp.ga/wanwanton/" target="_blank" class="work" style="background-image: url(images/works/wanwanton.jpg);"> -->
 						<div class="desc">
 							<h3>旺旺通國際有限公司</h3>
 							<span>(形象網站)</span>
@@ -725,12 +731,21 @@
 	<script src="js/jquery.stellar.min.js"></script>
 	<!-- Easy PieChart -->
 	<script src="js/jquery.easypiechart.min.js"></script>
-
+	<!-- 彈跳視窗 -->
+	<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 	<!-- <script src="js/google_map.js"></script> -->
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
 	<script type="text/javascript">
+		$(".wanwanton").click(function(event) {
+			swal({
+				title: '<strong>HTML <u>example</u></strong>',
+				imageUrl: 'images/works/wanwanton.jpg',
+				imageAlt: 'A tall image'
+			});
+		});
+
 		$(".fulirich").hover(function() {
 			$(".fulirich > .desc > span").html("<a href='http://sushentravel.web.youp.ga/fulirich/login' target='_blank'><h5 style='color:red'>(後台管理)<br />(測試帳號:admin;密碼:admin)</h5></a>")
 		});

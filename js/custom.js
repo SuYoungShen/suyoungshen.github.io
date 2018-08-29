@@ -1,7 +1,7 @@
 // 旺旺通國際有限公司
 $(".wanwanton").click(function(event) {
   var title = "<strong>旺旺通國際有限公司</strong>";
-  var text = "旺旺通國際有限公司形象網站，主要為介紹此公司的營運。";
+  var text = "<p>旺旺通國際有限公司形象網站，主要為介紹此公司的營運。</p>";
   var img = "wanwanton.jpg";
   var showCancelButton = false;
   var front = "http://sushentravel.web.youp.ga/wanwanton";
@@ -13,8 +13,8 @@ $(".wanwanton").click(function(event) {
 // 旺旺通國際有限公司-黑卡介紹
 $(".blackcard").click(function(event) {
   var title = "<strong>旺旺通國際有限公司-黑卡介紹</strong>";
-  var text = "黑卡介紹形象網站，主要為介紹黑卡如何使用與可在哪裡使用。"+
-  "<br /><h5 style='color:red'>(測試帳號:test;密碼:test)</h5>";
+  var text = "<p>黑卡介紹形象網站，主要為介紹黑卡如何使用與可在哪裡使用。</p>"+
+  "<h5 style='color:red'>(測試帳號:test;密碼:test)</h5>";
   var showCancelButton = false;
   var img = "blackcard.jpg";
   var front = "http://sushentravel.web.youp.ga/blackcard";
@@ -27,9 +27,9 @@ $(".blackcard").click(function(event) {
 $(".travel").click(function(event) {
   var title = "<strong>旅遊網站</strong>";
   var text =
-  "平時喜歡旅行的我，有時不知道要往哪裡跑，在當時也在學習串接api，便也在政府開放資料網查到有景點與美食資料"+
-  "並把資料串接到自己的網站，也隨時能得知新資料。"+
-  "<br /><h5 style='color:red'>(測試帳號:test@test.com;密碼:test)</h5>";
+  "<p>平時喜歡旅行的我，有時不知道要往哪裡跑，在當時也在學習串接api，便也在政府開放資料網查到有景點與美食資料"+
+  "並把資料串接到自己的網站，也隨時能得知新資料。</p>"+
+  "<h5 style='color:red'>(測試帳號:test@test.com;密碼:test)</h5>";
   var showCancelButton = false;
   var img = "travel.jpg";
   var front = "http://sushentravel.web.youp.ga/blackcard";
@@ -41,8 +41,8 @@ $(".travel").click(function(event) {
 // 富利管理顧問有限公司
 $(".fulirich").click(function(event) {
   var title = "<strong>富利管理顧問有限公司</strong>";
-  var text = "富利管理顧問有限公司形象網站，主要為介紹此公司的營運。"+
-  "<br /><h5 style='color:red'>(後台管理)<br />(測試帳號:admin;密碼:admin)</h5>";
+  var text = "<p>富利管理顧問有限公司形象網站，主要為介紹此公司的營運。</p>"+
+  "<h5 style='color:red'>(後台管理)<br />(測試帳號:admin;密碼:admin)</h5>";
   var showCancelButton = true;
   var img = "fulirich.jpg";
   var front = "http://sushentravel.web.youp.ga/fulirich";
@@ -54,8 +54,11 @@ $(".fulirich").click(function(event) {
 // Madtown Barbell
 $(".gym").click(function(event) {
   var title = "<strong>Madtown Barbell</strong>";
-  var text = "富利管理顧問有限公司形象網站，主要為介紹此公司的營運。"+
-  "<br /><h5 style='color:red'>(後台管理)<br />(測試帳號:90218104;密碼:90218104)</h5>";
+  var text = "<p>此為健身房網站，主要是紀錄會員進出時間與管理會員使用的專案</p>"+
+  "<p>當加入會員時，會員需選擇特定專案才能進入健身房，"+
+  "而會員進入健身房時，使用條碼掃描器逼會員卡，"+
+  "系統便會記錄會員當下時間，若會員專案快過期便會做提醒動作</p>"+
+  "<h5 style='color:red'>(後台管理)<br />(測試帳號:90218104;密碼:90218104)</h5>";
   var showCancelButton = true;
   var img = "gym.jpg";
   var front = "http://sushentravel.web.youp.ga/gym";

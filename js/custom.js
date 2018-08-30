@@ -32,7 +32,7 @@ $(".travel").click(function(event) {
   "<h5 style='color:red'>(測試帳號:test@test.com;密碼:test)</h5>";
   var showCancelButton = false;
   var img = "travel.jpg";
-  var front = "http://sushentravel.web.youp.ga/blackcard";
+  var front = "http://sushentravel.web.youp.ga/travel";
   var backstage = "#";
   webs(title, text, showCancelButton, img, front, backstage);
 });

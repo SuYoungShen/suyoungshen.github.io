@@ -126,6 +126,6 @@ function imgs(title, text, img){
     confirmButtonText: 'ok',
     confirmButtonColor: '#198b3f',
     confirmButtonClass: 'btn',
-    width: "90rem"
+    width: "85rem"
   });
 }

@@ -67,6 +67,18 @@ $(".gym").click(function(event) {
 });
 // Madtown Barbell
 
+
+// changgeng 長庚紀念醫院高雄院區-醫療品質暨病人安全委員會
+$(".changgeng").click(function(event) {
+  var title = "<strong>長庚紀念醫院高雄院區-醫療品質暨病人安全委員會</strong>";
+  var text = "<p>此為醫療品質暨病人安全委員會形象網站，主要為介紹此小組內部組織，"+
+             "讓不認識的人能快速的了解本組的運作方向。</p>";
+  var img = "changgeng.jpg";
+  imgs(title, text, img);
+
+});
+// changgeng
+
 // 台東大學-圖書館
 $(".library").click(function(event) {
   var title = "<strong>台東大學-圖書館</strong>";

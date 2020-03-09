@@ -1,0 +1,42 @@
+body, h1, span, a{
+			font-family: 'Microsoft JhengHei', 'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+			font-weight: bold;
+		}
+		p{
+			font-weight: normal;
+		}
+		.html{
+			background-color: #f16529 !important;
+		}
+		.javascript{
+			background-color: #f5de19 !important;
+		}
+		.jquery{
+			background-color: #0868ab !important;
+		}
+		.wordpress{
+			background-color: #0087be !important;
+		}		
+		.easyui{
+			background-color: #00be06 !important;
+		}
+		.php{
+			background-color: #777bb3 !important;
+		}
+		.mysql{
+			background-color: #e58e00 !important;
+		}
+		.c{
+			background-color: #ab048e !important;
+		}
+		.codeigniter{
+			background-color: #ee4323 !important;
+		}
+		.camera{
+			background-color: #2333ee !important;
+		}
+		.btn-primary:hover{
+			background: #000000 !important;
+		  border-color: #000000 !important;
+			color: #fff !important;
+		}

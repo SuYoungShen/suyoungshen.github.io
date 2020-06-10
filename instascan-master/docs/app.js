@@ -1,8 +1,7 @@
 var app = new Vue({
   el: '#app',
   data: {
-	  continuous:true,
-    scanner: null,
+    scanner: true,
     activeCameraId: null,
     cameras: [],
     scans: []

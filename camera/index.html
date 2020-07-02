@@ -1,102 +1,96 @@
 <html>
+
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<script type="text/javascript" src="src/js/jquery.qrcode.js"></script>
-<script type="text/javascript" src="src/js/qrcode.js"></script>
-<script type="text/javascript">        
-        <!-- if(typeof FileReader == "undified") { -->
-            <!-- alert("您老的瀏覽器不行了！"); -->
-        <!-- } -->
-        function showDataByURL() {
-            var resultFile = document.getElementsByClassName("fileDemo")[1].files[0];
-            if (resultFile) {
-                var reader = new FileReader();                
-                reader.readAsDataURL(resultFile);
-                reader.onload = function (e) {
-                    var urlData = this.result;
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<script type="text/javascript" src="src/js/jquery.qrcode.js"></script>
+	<script type="text/javascript" src="src/js/qrcode.js"></script>
+	<script type="text/javascript">
+		function showDataByURL() {
+			var resultFile = "";
+			if (document.getElementsByClassName("fileDemo")[0].files[0] != undefined) {
+				resultFile = document.getElementsByClassName("fileDemo")[0].files[0];
+			}
+			if (document.getElementsByClassName("fileDemo")[1].files[0] != undefined) {
+				resultFile = document.getElementsByClassName("fileDemo")[1].files[0];
+			}
+
+			if (resultFile) {
+				var reader = new FileReader();
+				reader.readAsDataURL(resultFile);
+				reader.onload = function (e) {
+					var urlData = this.result;
 					var reData = "";
-					if(urlData.indexOf("image") > -1){
+					if (urlData.indexOf("image") > -1) {
 						reData = "<img src='" + urlData + "' alt='" + resultFile.name + "' class='img-fluid rounded'/>";
+						document.getElementById("image").innerHTML += reData;
 					}
-					if(urlData.indexOf("video") > -1){
-						reData = "<video width='320' height='240' controls><source src='"+urlData+"'></video>";
+					if (urlData.indexOf("video") > -1) {
+						reData = "<video width='320' height='240' controls><source src='" + urlData + "'></video>";
+						document.getElementById("video").innerHTML += reData;
 					}
-					document.getElementById("result").innerHTML += reData;
-                }; 
-            }
+				};
+			}
+		}
+	</script>
 
-        } 
-        <!-- function showDataByBinaryString() { -->
-              <!-- var resultFile = document.getElementById("fileDemo").files[0]; -->
-            <!-- if (resultFile) { -->
-                <!-- var reader = new FileReader(); -->
-                <!-- //非同步方式，不會影響主執行緒 -->
-                <!-- reader.readAsBinaryString(resultFile); -->
+	<head>
 
-                <!-- reader.onload = function(e) { -->
-                    <!-- var urlData = this.result; -->
-                    <!-- document.getElementById("result").innerHTML += urlData; -->
-                <!-- }; -->
-            <!-- } -->
-        <!-- } -->
-        <!-- function showDataByText() { -->
-            <!-- var resultFile = document.getElementById("fileDemo").files[0]; -->
-            <!-- if (resultFile) { -->
-                <!-- var reader = new FileReader(); -->
-
-                <!-- reader.readAsText(resultFile,'UTF-8'); -->
-                <!-- reader.onload = function (e) { -->
-                    <!-- var urlData = this.result; -->
-                    <!-- document.getElementById("result").innerHTML += urlData; -->
-                <!-- }; -->
-            <!-- } -->
-        <!-- } -->
-
-    </script>
-<head>
-<body>
-<!-- capture="environment" 後鏡頭、 capture="user" 前鏡頭 -->
-    <!-- <input type="button" value="readAsBinaryString"  id="readAsBinaryString" onclick="showDataByBinaryString();"/> -->
-    <!-- <input type="button" value="readAsText"  id="readAsText" onclick="showDataByText();"/> -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-12">
-				<label>掃描開網頁</<label>
-				<div id="qrcodeTable"></div>
+	<body>
+		<!-- capture="environment" 後鏡頭、 capture="user" 前鏡頭 -->
+		<!-- <input type="button" value="readAsBinaryString"  id="readAsBinaryString" onclick="showDataByBinaryString();"/> -->
+		<!-- <input type="button" value="readAsText"  id="readAsText" onclick="showDataByText();"/> -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<label>掃描開網頁</<label>
+						<div id="qrcodeTable"></div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-				<div class="col-4">
+			<div class="row">
+				<div class="col-6">
 					<label>開啟相機</<label>
-					<input type="file" name="fileDemo" class="fileDemo" capture="environment" accept="image/*" onchange="showDataByURL();"/>					
+						<input type="file" name="fileDemo" class="fileDemo" capture="environment" accept="image/*"
+							onchange="showDataByURL();" />
 				</div>
-				<div class="col-4">
-					<label>開啟麥克風</<label>
-					<input type="file" name="audio" accept="audio/*" capture>					
-				</div>
-				 <div class="col-4">
+				<!-- <div class="col-4"> -->
+				<!-- <label>開啟麥克風</<label> -->
+				<!-- <input type="file" name="audio" accept="audio/*" capture>					 -->
+				<!-- </div> -->
+				<div class="col-6">
 					<label>開啟攝影</<label>
-					<input type="file" accept="video/*" class="fileDemo" capture="user" onchange="showDataByURL();"/>
+						<input type="file" accept="video/*" class="fileDemo" capture="user"
+							onchange="showDataByURL();" />
 				</div>
-		</div>
-		<div class="row">
-			<div class='col-6'>
-				<div id="result"></div>
+			</div>
+			<div class="row">
+				<div class='col-6'>
+					<div id="image"></div>
+				</div>
+				<div class='col-6'>
+					<div id="video"></div>
+				</div>
 			</div>
 		</div>
-	</div>
-<script>
-$('#qrcodeTable').qrcode({
-	//render : "table",
-	width: 100,
-	height: 100,
-	text : location.href
-});		
-</script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-</body>
+		<script>
+			$('#qrcodeTable').qrcode({
+				//render : "table",
+				width: 100,
+				height: 100,
+				text: location.href
+			});
+		</script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"></script>
+	</body>
+
 </html>

@@ -52,25 +52,21 @@
     <!-- <input type="button" value="readAsText"  id="readAsText" onclick="showDataByText();"/> -->
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-12">
 				<div class="col-3">
 					<label>開啟相機</<label>
-					<input type="file" name="fileDemo" id="fileDemo" capture="environment" accept="image/*" />
+					<input type="file" name="fileDemo" id="fileDemo" capture="environment" accept="image/*" />					
 				</div>
 				<div class="col-3">
 					<label>開啟麥克風</<label>
-				<input type="file" name="audio" accept="audio/*" capture>
+					<input type="file" name="audio" accept="audio/*" capture>					
 				</div>
-				<div class="col-3">
+				 <div class="col-3">
 					<label>開啟攝影</<label>
 					<input type="file" accept="video/*" capture="user" />
 				</div>
 				<div class="col-3">
-					<label>開啟預覽照片</<label>
-				<input type="button" value="readAsDataURL" id="readAsDataURL" onclick="showDataByURL();"/>
+					<button type="button" value="readAsDataURL" class="btn btn-danger" id="readAsDataURL" onclick="showDataByURL();"/>開啟預覽照片</button>
 				</div>
-
-			</div>
 		</div>
 		<div class="row">
 			<div class='col-6'>

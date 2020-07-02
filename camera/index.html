@@ -47,9 +47,10 @@
     </script>
 <head>
 <body>
-<input type="file" name="fileDemo" id="fileDemo" capture="camera" accept="image/*" />
+<!-- capture="environment" 、 capture="user" -->
+<input type="file" name="fileDemo" id="fileDemo" capture="environment" accept="image/*" />
   <input type="file" name="audio" accept="audio/*" capture>
-	<input type="file" accept="video/*" capture="environment" />
+	<input type="file" accept="video/*" capture="user" />
 
     <input type="button" value="readAsDataURL" id="readAsDataURL" onclick="showDataByURL();"/>
     <!-- <input type="button" value="readAsBinaryString"  id="readAsBinaryString" onclick="showDataByBinaryString();"/> -->

@@ -119,7 +119,7 @@
       <div class="container">
         <div class="row">
           <div class="col-6">
-            <div id="reader"></div>
+            <!-- <div id="readers"></div> -->
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@
           html5QrCode.scanFile(imageFile, true)
             .then(qrCodeMessage => {
               // success, use qrCodeMessage
-              console.log(qrCodeMessage);
+              alert(qrCodeMessage);
             })
             .catch(err => {
               // failure, handle it.
@@ -152,31 +152,31 @@
         });
 
         // 掃描
-        function docReady(fn) {
-          // see if DOM is already available
-          if (document.readyState === "complete" || document.readyState === "interactive") {
-            // call on next available tick
-            setTimeout(fn, 1);
-          } else {
-            document.addEventListener("DOMContentLoaded", fn);
-          }
-        }
-        docReady(function () {
-          hljs.initHighlightingOnLoad();
-          var results = document.getElementById('scanned-result');
-          var lastMessage;
-          var codesFound = 0;
-          function onScanSuccess(qrCodeMessage) {
-            if (lastMessage !== qrCodeMessage) {
-              lastMessage = qrCodeMessage;
-              ++codesFound;
-              results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
-            }
-          }
-          var html5QrcodeScanner = new Html5QrcodeScanner(
-            "reader", { fps: 10, qrbox: 250 }, /* verbose= */ true);
-          html5QrcodeScanner.render(onScanSuccess);
-        });
+        // function docReady(fn) {
+        //   // see if DOM is already available
+        //   if (document.readyState === "complete" || document.readyState === "interactive") {
+        //     // call on next available tick
+        //     setTimeout(fn, 1);
+        //   } else {
+        //     document.addEventListener("DOMContentLoaded", fn);
+        //   }
+        // }
+        // docReady(function () {
+        //   hljs.initHighlightingOnLoad();
+        //   var results = document.getElementById('scanned-result');
+        //   var lastMessage;
+        //   var codesFound = 0;
+        //   function onScanSuccess(qrCodeMessage) {
+        //     if (lastMessage !== qrCodeMessage) {
+        //       lastMessage = qrCodeMessage;
+        //       ++codesFound;
+        //       results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
+        //     }
+        //   }
+        //   var html5QrcodeScanner = new Html5QrcodeScanner(
+        //     "reader", { fps: 10, qrbox: 250 }, /* verbose= */ true);
+        //   html5QrcodeScanner.render(onScanSuccess);
+        // });
       </script>
     </div>
   </main>

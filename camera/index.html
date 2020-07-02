@@ -1,8 +1,19 @@
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+ $('#files').change(function () {
+      var file = $("#files")[0].files[0];
+	  $("h1").text("fileName："+file.name);
+	  $("h2").text("fileSize："+file.size);
+    });
+});
+</script>
 <head>
 <body>
-<input type="file" accept="image/*" capture="camera" />
-
+<input type="file" accept="image/*" id="files" capture="camera" />
+<h1></h1>
+<h2></h2>
 </body>
 </html>

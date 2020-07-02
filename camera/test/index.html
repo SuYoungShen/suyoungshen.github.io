@@ -116,7 +116,7 @@
           </div>
         </div>
       </div>
-      <div id="reader" width="600px" height="600px"></div>
+      <div id="reader"></div>
 
       <input type="file" id="qr-input-file" accept="image/*">
 
@@ -124,7 +124,7 @@
       <script src="./assets/js/html5-qrcode.min.js"></script>
       <script>
 
-        const html5QrCode = new Html5Qrcode(/* element id */ "reader");
+        const html5QrCode = new Html5Qrcode("reader");
         // File based scanning
         const fileinput = document.getElementById('qr-input-file');
         fileinput.addEventListener('change', e => {

@@ -133,7 +133,7 @@
           hljs.initHighlightingOnLoad();
           var results = document.getElementById('scanned-result');
           var lastMessage;
-          var codesFound = 1;
+          var codesFound = 0;
           function onScanSuccess(qrCodeMessage) {
             if (lastMessage !== qrCodeMessage) {
               lastMessage = qrCodeMessage;

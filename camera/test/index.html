@@ -116,40 +116,9 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-6" id="readers">
-          </div>
-        </div>
-      </div>
-      <input type="file" id="qr-input-file" accept="image/*">
-
       <script src="./assets/js/highlight.min.js"></script>
       <script src="./assets/js/html5-qrcode.min.js"></script>
       <script>
-
-        const html5QrCode = new Html5Qrcode("readers");
-        // File based scanning
-        const fileinput = document.getElementById('qr-input-file');
-        fileinput.addEventListener('change', e => {
-          if (e.target.files.length == 0) {
-            // No file selected, ignore
-            return;
-          }
-
-          const imageFile = e.target.files[0];
-          // Scan QR Code
-          html5QrCode.scanFile(imageFile, true)
-            .then(qrCodeMessage => {
-              // success, use qrCodeMessage
-              alert(qrCodeMessage);
-            })
-            .catch(err => {
-              // failure, handle it.
-              console.log(`Error scanning file. Reason: ${err}`)
-            });
-        });
-
         // 掃描
         function docReady(fn) {
           // see if DOM is already available

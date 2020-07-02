@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0052)https://blog.minhazav.dev/research/html5-qrcode.html -->
-<html lang="en">
+<html>
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -118,8 +118,7 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-6">
-            <!-- <div id="readers"></div> -->
+          <div class="col-6" id="readers">
           </div>
         </div>
       </div>
@@ -129,7 +128,7 @@
       <script src="./assets/js/html5-qrcode.min.js"></script>
       <script>
 
-        const html5QrCode = new Html5Qrcode("reader");
+        const html5QrCode = new Html5Qrcode("readers");
         // File based scanning
         const fileinput = document.getElementById('qr-input-file');
         fileinput.addEventListener('change', e => {
@@ -152,31 +151,31 @@
         });
 
         // 掃描
-        // function docReady(fn) {
-        //   // see if DOM is already available
-        //   if (document.readyState === "complete" || document.readyState === "interactive") {
-        //     // call on next available tick
-        //     setTimeout(fn, 1);
-        //   } else {
-        //     document.addEventListener("DOMContentLoaded", fn);
-        //   }
-        // }
-        // docReady(function () {
-        //   hljs.initHighlightingOnLoad();
-        //   var results = document.getElementById('scanned-result');
-        //   var lastMessage;
-        //   var codesFound = 0;
-        //   function onScanSuccess(qrCodeMessage) {
-        //     if (lastMessage !== qrCodeMessage) {
-        //       lastMessage = qrCodeMessage;
-        //       ++codesFound;
-        //       results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
-        //     }
-        //   }
-        //   var html5QrcodeScanner = new Html5QrcodeScanner(
-        //     "reader", { fps: 10, qrbox: 250 }, /* verbose= */ true);
-        //   html5QrcodeScanner.render(onScanSuccess);
-        // });
+        function docReady(fn) {
+          // see if DOM is already available
+          if (document.readyState === "complete" || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+          } else {
+            document.addEventListener("DOMContentLoaded", fn);
+          }
+        }
+        docReady(function () {
+          hljs.initHighlightingOnLoad();
+          var results = document.getElementById('scanned-result');
+          var lastMessage;
+          var codesFound = 0;
+          function onScanSuccess(qrCodeMessage) {
+            if (lastMessage !== qrCodeMessage) {
+              lastMessage = qrCodeMessage;
+              ++codesFound;
+              results.innerHTML += `<div>[${codesFound}] - ${qrCodeMessage}</div>`;
+            }
+          }
+          var html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 }, /* verbose= */ true);
+          html5QrcodeScanner.render(onScanSuccess);
+        });
       </script>
     </div>
   </main>

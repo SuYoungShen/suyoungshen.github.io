@@ -1,5 +1,5 @@
-var name = "蘇湧盛";
-$(".name").text(name);
+var names = "蘇湧盛";
+$(".names").text(names);
 var birthday = "1994/09/15";
 $(".birthday").text(birthday);
 var email = "d7339803@gmail.com";

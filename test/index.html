@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="test.js"></script>
+    <script>
+        var t = navigator.serial.getPorts();
+
+        async function connectSerial() {
+            const log = document.getElementById('target');
+
+            try {
+                const port = await navigator.serial.requestPort();
+                await port.open({ baudRate: 9600/*, dataBits: 8, stopBits: 1, parity: "none"*/ });
+                // await port.open({ baudRate: 9600 });
+                // await writer.write(" U001\n123456789 ");
+
+                const encoder = new TextEncoderStream();
+                const writableStreamClosed = encoder.readable.pipeTo(port.writable);
+                const writer = encoder.writable.getWriter();
+                writer.write(" U001\n123456789 ");
+                writer.close();
+                await writableStreamClosed;
+                await port.close();
+
+                // await writer.write(encoder.encode("0x01 0x03 0x00 0x01 0x00 0x01"));
+
+                // const decoder = new TextDecoderStream();
+
+                // port.readable.pipeTo(decoder.writable);
+
+                // const inputStream = decoder.readable;
+                // const reader = inputStream.getReader();
+
+                // while (true) {
+                //     const { value, done } = await reader.read();
+                //     if (value) {
+                //         log.textContent += value + '\n';
+                //     }
+                //     if (done) {
+                //         console.log('[readLoop] DONE', done);
+                //         reader.releaseLock();
+                //         break;
+                //     }
+                // }
+
+            } catch (error) {
+                log.innerHTML = error;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <button id="connectButton" onclick="connectSerial();">Connect via Serial Port</button>
+
+    <div id="target"></div>
+</body>
+
+</html>

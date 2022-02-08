@@ -1,95 +1,124 @@
-<!DOCTYPE html>
-<!-- saved from url=(0049)https://mauntrelio.github.io/demos/qrcode-reader/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- saved from url=(0029)https://cozmo.github.io/jsQR/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>qrcode-reader usage example</title>
-  <link rel="stylesheet" href="./qrcode-reader usage example_files/qrcode-reader.min.css">
-  <link rel="stylesheet" href="./qrcode-reader usage example_files/css">
+  <title>jsQR Demo</title>
+  <script src="./jsQR Demo_files/jsQR.js.下載"></script>
+  <link href="./jsQR Demo_files/css" rel="stylesheet">
   <style>
     body {
-      font-family: 'Lato', sans-serif;
+      font-family: 'Ropa Sans', sans-serif;
+      color: #333;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #githubLink {
+      position: absolute;
+      right: 0;
+      top: 12px;
+      color: #2D99FF;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 40px;
+    }
+
+    #loadingMessage {
+      text-align: center;
+      padding: 40px;
+      background-color: #eee;
+    }
+
+    #canvas {
+      width: 100%;
+    }
+
+    #output {
+      margin-top: 20px;
+      background: #eee;
+      padding: 10px;
+      padding-bottom: 0;
+    }
+
+    #output div {
+      padding-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    #noQRFound {
+      text-align: center;
     }
   </style>
 <script src="chrome-extension://jhffgcfmcckgmioipfnmbannkpncfipo/util.js"></script><script src="chrome-extension://jhffgcfmcckgmioipfnmbannkpncfipo/pagejs.js"></script></head>
-
 <body style="cursor: url(&quot;null&quot;), default;">
-  
-<h1>QRCode reader plugin examples</h1>
+  <h1>jsQR Demo</h1>
+  <a id="githubLink" href="https://github.com/cozmo/jsQR">View documentation on Github</a>
+  <p>Pure JavaScript QR code decoding library.</p>
+  <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
+  <canvas id="canvas" hidden=""></canvas>
+  <div id="output" hidden="">
+    <div id="outputMessage">No QR code detected.</div>
+    <div hidden=""><b>Data:</b> <span id="outputData"></span></div>
+  </div>
+  <script>
+    var video = document.createElement("video");
+    var canvasElement = document.getElementById("canvas");
+    var canvas = canvasElement.getContext("2d");
+    var loadingMessage = document.getElementById("loadingMessage");
+    var outputContainer = document.getElementById("output");
+    var outputMessage = document.getElementById("outputMessage");
+    var outputData = document.getElementById("outputData");
 
-<form>
-  
-  <label for="single">Single input (settings in data attributes: no audio, regexp to match URLs):</label> 
-  <input id="single" type="text" size="50"> 
-  <button type="button" class="qrcode-reader" id="openreader-single" data-qrr-target="#single" data-qrr-audio-feedback="false" data-qrr-qrcode-regexp="^https?:\/\/">Read QRCode</button>
-  <br>
-  <br>
+    function drawLine(begin, end, color) {
+      canvas.beginPath();
+      canvas.moveTo(begin.x, begin.y);
+      canvas.lineTo(end.x, end.y);
+      canvas.lineWidth = 4;
+      canvas.strokeStyle = color;
+      canvas.stroke();
+    }
 
-  <label for="single">Single input (rebound click, depending on target input's content):</label> 
-  <input id="single2" type="text" size="50"> 
-  <button type="button" id="openreader-single2" data-qrr-target="#single2" data-qrr-audio-feedback="true">Read or follow QRCode</button>
-  <br>
-  <br>
-  
-  <label for="multiple">Multiple input (settings in data attributes: exclude duplicates, disable repeat timeout):</label><br>
-  <textarea id="multiple" cols="50" rows="15"></textarea> 
-  <br>
-  <button class="qrcode-reader" type="button" id="openreader-multi" data-qrr-multiple="true" data-qrr-repeat-timeout="0" data-qrr-line-color="#00FF00" data-qrr-target="#multiple">Read QRCodes</button>
-  <br>
-  <br>
-  
-  <label for="multiple">Multiple input 2 (include duplicates, settings in runtime call):</label><br>
-  <textarea id="multiple2" cols="50" rows="15"></textarea> 
-  <br>
-  <button type="button" id="openreader-multi2">Read QRCodes</button>  <br>
-  <br>
-  <br>
-  
-  <label for="multiple">Multiple input 3 (settings in data attributes overridden in runtime call):</label><br>
-  <textarea id="multiple3" cols="50" rows="15"></textarea> 
-  <br>
-  <button type="button" id="openreader-multi3" data-qrr-multiple="false" data-qrr-target="#multiple" data-qrr-skip-duplicates="false">Read QRCodes</button>
-  
-</form>
-
-
-<script src="./qrcode-reader usage example_files/jquery.min.js.下載"></script>
-<script src="./qrcode-reader usage example_files/qrcode-reader.min.js.下載"></script>
-
-<script>
-  
-  $(function(){
-
-    // overriding path of JS script and audio 
-    $.qrCodeReader.jsQRpath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/js/jsQR/jsQR.min.js";
-    $.qrCodeReader.beepPath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/audio/beep.mp3";
-
-    // bind all elements of a given class
-    $(".qrcode-reader").qrCodeReader();
-
-    // bind elements by ID with specific options
-    $("#openreader-multi2").qrCodeReader({multiple: true, target: "#multiple2", skipDuplicates: false});
-    $("#openreader-multi3").qrCodeReader({multiple: true, target: "#multiple3"});
-
-    // read or follow qrcode depending on the content of the target input
-    $("#openreader-single2").qrCodeReader({callback: function(code) {
-      if (code) {
-        window.location.href = code;
-      }  
-    }}).off("click.qrCodeReader").on("click", function(){
-      var qrcode = $("#single2").val().trim();
-      if (qrcode) {
-        window.location.href = qrcode;
-      } else {
-        $.qrCodeReader.instance.open.call(this);
-      }
+    // Use facingMode: environment to attemt to get the front camera on phones
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.play();
+      requestAnimationFrame(tick);
     });
 
+    function tick() {
+      loadingMessage.innerText = "⌛ Loading video..."
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        loadingMessage.hidden = true;
+        canvasElement.hidden = false;
+        outputContainer.hidden = false;
 
-  });
+        canvasElement.height = video.videoHeight;
+        canvasElement.width = video.videoWidth;
+        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+        var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+        var code = jsQR(imageData.data, imageData.width, imageData.height, {
+          inversionAttempts: "dontInvert",
+        });
+        if (code) {
+          drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+          drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+          drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+          drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+          outputMessage.hidden = true;
+          outputData.parentElement.hidden = false;
+          outputData.innerText = code.data;
+        } else {
+          outputMessage.hidden = false;
+          outputData.parentElement.hidden = true;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+  </script>
 
-</script>
 
-
-
-<div id="qrr-overlay"></div><div id="qrr-container"><span id="qrr-close">×</span><div id="qrr-loading-message">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div><canvas id="qrr-canvas" class="hidden"></canvas><div id="qrr-output"><div id="qrr-nodata">No QR code detected.</div><div id="qrr-output-data"></div></div><audio hidden="" id="qrr-beep" src="https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/audio/beep.mp3" type="audio/mp3"></audio><a id="qrr-ok">OK</a></div></body></html>
+</body></html>

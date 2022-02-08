@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<!-- saved from url=(0049)https://mauntrelio.github.io/demos/qrcode-reader/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>qrcode-reader usage example</title>
-  <link rel="stylesheet" href="dist/css/qrcode-reader.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="./qrcode-reader usage example_files/qrcode-reader.min.css">
+  <link rel="stylesheet" href="./qrcode-reader usage example_files/css">
   <style>
     body {
       font-family: 'Lato', sans-serif;
     }
   </style>
-</head>
+<script src="chrome-extension://jhffgcfmcckgmioipfnmbannkpncfipo/util.js"></script><script src="chrome-extension://jhffgcfmcckgmioipfnmbannkpncfipo/pagejs.js"></script></head>
 
-<body>
+<body style="cursor: url(&quot;null&quot;), default;">
   
 <h1>QRCode reader plugin examples</h1>
 
@@ -21,29 +21,20 @@
   
   <label for="single">Single input (settings in data attributes: no audio, regexp to match URLs):</label> 
   <input id="single" type="text" size="50"> 
-  <button type="button" class="qrcode-reader" id="openreader-single" 
-    data-qrr-target="#single" 
-    data-qrr-audio-feedback="false" 
-    data-qrr-qrcode-regexp="^https?:\/\/">Read QRCode</button>
+  <button type="button" class="qrcode-reader" id="openreader-single" data-qrr-target="#single" data-qrr-audio-feedback="false" data-qrr-qrcode-regexp="^https?:\/\/">Read QRCode</button>
   <br>
   <br>
 
   <label for="single">Single input (rebound click, depending on target input's content):</label> 
   <input id="single2" type="text" size="50"> 
-  <button type="button" id="openreader-single2" 
-    data-qrr-target="#single2" 
-    data-qrr-audio-feedback="true">Read or follow QRCode</button>
+  <button type="button" id="openreader-single2" data-qrr-target="#single2" data-qrr-audio-feedback="true">Read or follow QRCode</button>
   <br>
   <br>
   
   <label for="multiple">Multiple input (settings in data attributes: exclude duplicates, disable repeat timeout):</label><br>
   <textarea id="multiple" cols="50" rows="15"></textarea> 
   <br>
-  <button class="qrcode-reader" type="button" id="openreader-multi" 
-    data-qrr-multiple="true" 
-    data-qrr-repeat-timeout="0"
-    data-qrr-line-color="#00FF00"
-    data-qrr-target="#multiple">Read QRCodes</button>
+  <button class="qrcode-reader" type="button" id="openreader-multi" data-qrr-multiple="true" data-qrr-repeat-timeout="0" data-qrr-line-color="#00FF00" data-qrr-target="#multiple">Read QRCodes</button>
   <br>
   <br>
   
@@ -57,24 +48,21 @@
   <label for="multiple">Multiple input 3 (settings in data attributes overridden in runtime call):</label><br>
   <textarea id="multiple3" cols="50" rows="15"></textarea> 
   <br>
-  <button type="button" id="openreader-multi3" 
-    data-qrr-multiple="false" 
-    data-qrr-target="#multiple" 
-    data-qrr-skip-duplicates="false">Read QRCodes</button>
+  <button type="button" id="openreader-multi3" data-qrr-multiple="false" data-qrr-target="#multiple" data-qrr-skip-duplicates="false">Read QRCodes</button>
   
 </form>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="dist/js/qrcode-reader.min.js?v=20190604"></script>
+<script src="./qrcode-reader usage example_files/jquery.min.js.下載"></script>
+<script src="./qrcode-reader usage example_files/qrcode-reader.min.js.下載"></script>
 
 <script>
   
   $(function(){
 
     // overriding path of JS script and audio 
-    $.qrCodeReader.jsQRpath = "../dist/js/jsQR/jsQR.min.js";
-    $.qrCodeReader.beepPath = "../dist/audio/beep.mp3";
+    $.qrCodeReader.jsQRpath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/js/jsQR/jsQR.min.js";
+    $.qrCodeReader.beepPath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/audio/beep.mp3";
 
     // bind all elements of a given class
     $(".qrcode-reader").qrCodeReader();
@@ -103,5 +91,5 @@
 </script>
 
 
-</body>
-</html>
+
+<div id="qrr-overlay"></div><div id="qrr-container"><span id="qrr-close">×</span><div id="qrr-loading-message">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div><canvas id="qrr-canvas" class="hidden"></canvas><div id="qrr-output"><div id="qrr-nodata">No QR code detected.</div><div id="qrr-output-data"></div></div><audio hidden="" id="qrr-beep" src="https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/audio/beep.mp3" type="audio/mp3"></audio><a id="qrr-ok">OK</a></div></body></html>

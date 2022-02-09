@@ -69,10 +69,8 @@
 </form>
 
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-<!-- <script src="https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/js/qrcode-reader.min.js?env=dev"></script> -->
-<script src="jquery.min.js"></script>
-<script src="qrcode-reader.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/js/qrcode-reader.min.js?env=dev"></script>
 
 <script>
   

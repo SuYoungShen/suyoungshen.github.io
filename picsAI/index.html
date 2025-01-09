@@ -3,76 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOLO-like Object Detection</title>
-        <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* 防止滾動條出現 */
-        }
-
-        video {
-            display: none; /* 隱藏 video，因為我們只需要 canvas 顯示 */
-        }
-
-        canvas {
-            width: 50%; /* 填滿容器寬度 */
-            height: auto; /* 自動調整高度，保持比例 */
-            display: block; /* 避免滾動條 */
-        }
-    </style>
+    <title>Object Detection with Rear Camera</title>
 </head>
 <body>
-    <video id="video" autoplay muted playsinline></video>
-    <canvas id="canvas"></canvas>
-    <script>
-        async function setupCamera() {
-            const video = document.getElementById('video');
-            const stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: 'environment' } // 使用後置鏡頭
-            });
-            video.srcObject = stream;
-
-            return new Promise((resolve) => {
-                video.onloadedmetadata = () => resolve(video);
-            });
-        }
-
-        async function start() {
-            const video = await setupCamera();
-            const canvas = document.getElementById('canvas');
-            const ctx = canvas.getContext('2d');
-
-            // 動態設置 canvas 尺寸與 video 尺寸匹配
-            function resizeCanvas() {
-                const dpr = window.devicePixelRatio || 1;
-                canvas.width = video.videoWidth * dpr;
-                canvas.height = video.videoHeight * dpr;
-                canvas.style.width = video.videoWidth + 'px';
-                canvas.style.height = video.videoHeight + 'px';
-                ctx.scale(dpr, dpr); // 考慮設備像素密度
-            }
-
-            video.addEventListener('loadeddata', () => {
-                resizeCanvas();
-                draw();
-            });
-
-            // 實時繪製 video 到 canvas
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                requestAnimationFrame(draw);
-            }
-
-            // 監聽窗口大小變化，重新調整 canvas
-            window.addEventListener('resize', resizeCanvas);
-        }
-
-        start();
-    </script>
+    <h1>Object Detection (Rear Camera)</h1>
+    <video id="video" autoplay muted playsinline width="640" height="480"></video>
+    <canvas id="canvas" width="640" height="480"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
- 
+    <script src="app.js"></script>
 </body>
 </html>

@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YOLO-like Object Detection</title>
+       <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            width: 100%; /* 填滿容器 */
+            height: auto; /* 保持比例 */
+            display: block; /* 避免滾動條 */
+        }
+    </style>
 </head>
 <body>
     <h1>Object Detection with TensorFlow.js</h1>
     <video id="video" autoplay muted playsinline width="640" height="480"></video>
-    <canvas id="canvas" width="640" height="480"></canvas>
+    <canvas id="canvas"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
     <script src="app.js"></script>

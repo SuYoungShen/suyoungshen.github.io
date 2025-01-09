@@ -1,7 +1,11 @@
 async function setupCamera() {
     const video = document.getElementById('video');
     const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
+       video: {
+            facingMode: "environment", // 指定後置鏡頭
+            width: { ideal: 1280 },    // 理想寬度，可根據需要調整
+            height: { ideal: 720 }     // 理想高度，可根據需要調整
+        },
     });
     video.srcObject = stream;
 

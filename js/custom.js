@@ -26,9 +26,7 @@ $(function(){
   // 旅遊網站
   $("#travel").click(function() {
     let title = "<strong>旅遊網站</strong>";
-    let text =
-    "<p>平時喜歡旅行的我，有時不知道要往哪裡跑，在當時也在學習串接api，便也在政府開放資料網查到有景點與美食資料"+
-    "並把資料串接到自己的網站，也隨時能得知新資料。</p>";
+    let text = "<p>旅遊資訊整合專案： 透過串接政府 Open Data API，實現景點與美食資料的即時獲取與自動更新。此專案展現了獨立開發與外部 API 整合的實戰能力。</p>";
     let showCancelButton = false;
     let img = "travel.jpg";
     let front = "http://sushentravel.web.youp.ga/travel";

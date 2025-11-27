@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Scan Demo</title>
+
+<body>
+    <div id="qr-reader"></div>
+    <div id="qr-reader-results"></div>
+</body>
+<script src="./js/html5-qrcode.min.js"></script>
+<script>
+    // by：https://github.com/mebjas/html5-qrcode#pro-mode---if-you-want-to-implement-your-own-user-interface
+    var html5QrCode = new Html5Qrcode("qr-reader");
+    var qrCodeSuccessCallback = (decodedText, decodedResult) => {
+        alert("decodedText：" + decodedText);
+        // window.opener.document.getElementById('dFormMaster_qrCode').value = decodedText;
+        // window.opener.document.getElementById('dFormMaster_qrCode').focus();
+        // window.opener.document.getElementById('dFormMaster_qrCode').blur();
+        closes();
+    };
+
+    var config = { fps: 10, qrbox: window.innerWidth - 100 };
+    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+
+    function closes() {
+        // 關閉鏡頭
+        html5QrCode.stop().then((ignore) => {
+            // window.close();
+        }).catch((err) => {
+            alert(err);
+        });
+    }
+</script>
+</head>
+
+</html>
